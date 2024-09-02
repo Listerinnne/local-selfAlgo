@@ -1,0 +1,64 @@
+문제 3. 
+1)
+import java.util.Arrays;
+
+public class tmp {
+	static int[] arr = {4,3,2,1};
+	static int n = arr.length;
+	static int[] tmp = new int[n];
+
+	public static void main(String[] args) {
+
+		mergeSort(0, n-1);
+		System.out.println(Arrays.toString(arr));
+		
+	}
+
+	private static void mergeSort(int left, int right) {
+		
+		int mid = (left + right)/2;
+			mergeSort(left, mid);
+			mergeSort(mid+1, right);
+			merge(left, mid, right);
+			
+		
+	}
+
+	static void merge(int left, int mid, int right) {
+
+		int l = left;
+		int r = mid +1;
+		int idx = left;
+		
+		while(l<=r) {
+			while(l<=r && arr[l]<= arr[r]) {
+				tmp[idx++] = arr[l++];
+			}
+			while(arr[l] > arr[r]) {
+				tmp[idx++] = arr[r++];
+			}
+		}
+		if(l <= mid) {
+			for(int i=l; i<=mid; i++) {
+				tmp[idx++] = arr[i];
+			}
+		}
+		if(r <= right) {
+			for(int i=r; i<=right; i++) {
+				tmp[idx++] = arr[i];
+			}
+		}
+		
+		for(int i=left; i<=right; i++) {
+			arr[i] = tmp[i];
+		}
+		
+	}
+
+}
+
+2)
+병합정렬은 분할정복을 활용한 안정적인 정렬 알고리즘이다. 
+병합정렬은 배열을 나눌 수 없을 때까지 반으로 나눈 후 재귀적으로 정렬하고, 정렬한 것들을 병합하는 방식으로 동작한다. 
+병합정렬의 시간 복잡도는 O(NlogN)이며, 정렬된 배열을 임시로 저장하기 위한 추가 공간을 필요로 한다. 
+반면 병합배열과 동일하게 분할정복을 활용하는 퀵 정렬은 원본 배열에 바로 업데이트하기 때문에 추가 저장 공간을 필요로 하지 않는다. 
