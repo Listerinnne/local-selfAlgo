@@ -1,0 +1,27 @@
+
+public class ssafy_거스름돈문제 {
+
+	public static void main(String[] args) {
+		int change = 8;
+		int[] money = {0, 1, 4, 6};
+		//거슬러줘야 하는 돈 8원
+		int[][] dp = new int[3+1][8+1];
+		
+		
+		for(int i=1; i<=4; i++) {
+			for(int j=1; j<=9; j++) {
+				
+				if(money[i] > change) {
+					dp[i][j] = dp[i-1][j];
+				}else {
+					System.out.println(dp[i][j-money[i]] + money[i]);
+					dp[i][j] = Math.min(dp[i-1][j], dp[i][j-money[i]] + money[i]);
+				}
+				
+			}
+		}
+		
+		System.out.println(dp[4][9]);
+	}
+
+}

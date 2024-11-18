@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class Solution2 {
+	static int n, m;
+	static char[][] hair;
+	static char[] color = {'W', 'B', 'O'};
+	static int[] cnt ;
+	
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+		for(int tc=1; tc<=t; tc++) {
+			
+			n = sc.nextInt();
+			m = sc.nextInt();
+			hair = new char[n][m];
+			cnt = new int[3];
+			
+			for(int i=0; i<n; i++) {
+				hair[i] = sc.next().toCharArray();
+			}
+			//입력 끝
+			
+			for(int i=0; i<n; i++) {
+				for(int j=0; j<m; j++) {
+					
+					if(hair[n][m] != '.') {
+						for(int k=0; k<3; k++) {
+							if(hair[n][m] == color[k]) {}
+							recursion(n, m, color[k]);
+						}
+						
+					}
+					
+				}
+			}
+		}
+		
+		
+	}
+
+	private static void recursion(int n2, int m2, char c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
+
+
+//동적 계획법
+//- 피보나치 수열
+//- 동전 거스름 돈 문제
+//- 0 1 knapsack

@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class swea_1970_쉬운거스름돈 {
+
+	public static void main(String[] args) {
+		//fail
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		
+		for(int tc=1; tc<=t; tc++) {
+			int min = Integer.MAX_VALUE;
+			int n = sc.nextInt() / 10;	//주어지는 금액
+			int[] dp = new int[n+1];	//주어지는 금액+1
+			
+			for(int i=1; i<dp.length; i++) {
+				
+				dp[i] = Math.min(min, dp[i-1] + 1);
+				
+				if(i >= 5) dp[i] = Math.min(min, dp[i-5] + 1); 
+				if(i >= 10) dp[i] = Math.min(min, dp[i-10] + 1); 
+				if(i >= 50) dp[i] = Math.min(min, dp[i-50] + 1); 
+				if(i >= 100) dp[i] = Math.min(min, dp[i-100] + 1); 
+				if(i >= 500) dp[i] = Math.min(min, dp[i-500] + 1); 
+				if(i >= 1000) dp[i] = Math.min(min, dp[i-1000] + 1); 
+				if(i >= 5000) dp[i] = Math.min(min, dp[i-5000] + 1); 
+				
+			}
+			
+//			System.out.printf("#%d %d\n", tc, dp[n]);
+			
+			
+		}
+		
+		
+	}
+
+}

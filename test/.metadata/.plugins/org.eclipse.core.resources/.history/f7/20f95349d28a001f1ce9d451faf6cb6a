@@ -1,0 +1,47 @@
+import java.util.Arrays;
+
+public class ssafy_거꾸로순열2 {
+
+	static int[] nums;
+	static int N;
+	// 추가적인 공간 필요
+	static boolean[] visited;
+	static int[] result;
+	
+
+	public static void main(String[] args) {
+		nums = new int[] { 0, 1, 2 };
+		N = nums.length;
+		visited = new boolean[N];
+		result = new int[N];
+		int idx = 0;
+		
+		
+		recursion(idx);
+		
+
+	}
+
+
+	private static void recursion(int idx) {
+		//기저조건 : idx가 N이 될 경우
+		if(idx == 0) {
+			System.out.println(Arrays.toString(result));
+			return;
+		}
+		
+		//재귀
+		for(int i=N-1; i>=0; i--) {	//원본 배열을 거꾸로 탐색
+			if(visited[i])
+				continue;
+			
+			result[idx] = nums[i];	//result는 처음부터 채워지기 때문에 역순으로 출력됨
+			visited[i] = true;
+			recursion(idx + 1);
+			visited[i] = false;
+			
+		}
+		
+	}
+
+}

@@ -1,0 +1,45 @@
+
+public class ssafy_거스름돈문제 {
+
+	public static void main(String[] args) {
+		int change = 8;
+		int[] money = {0, 1, 4, 6};
+		//거슬러줘야 하는 돈 8원
+		int[][] dp = new int[3+1][change + 1];
+		
+		
+		for(int i=1; i<4; i++) {
+			for(int j=1; j<change+1; j++) {
+				System.out.printf("i : %d, j : %d\n", i, j);
+				if(money[i] > j) {
+					System.out.println(11111);
+					//바로 위 값 가져오기
+					dp[i][j] = dp[i-1][j];
+					
+				}else {
+					
+					if((j - dp[i][j-1])%i == 0) {	//나누어 떨어질 때만
+						System.out.println(2222222);
+						//			직전 값  + (현재최대거스름돈 - 직전값) / 현재금액단위
+						dp[i][j] = dp[i][j-1] + (j - dp[i][j-1])/i;
+					}else {	//나누어 떨어지지 않을 때
+						System.out.println(33333333);
+						//바로 위 값 가져오기
+						dp[i][j] = dp[i-1][j];
+					}
+					
+//					dp[i][j] = Math.min(dp[i-1][j], dp[i-1][j-money[i]] + money[i]);
+				}
+				
+			}
+		}
+		for(int[] i : dp) {
+			for(int j : i) {
+				System.out.print(j + " ");
+			}
+			System.out.println();
+		}
+		System.out.println(dp[3][change]);
+	}
+
+}

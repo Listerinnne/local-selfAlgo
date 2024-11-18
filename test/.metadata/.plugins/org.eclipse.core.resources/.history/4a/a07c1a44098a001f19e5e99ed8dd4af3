@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Solution2 {
+	static int n, m;
+	static char[][] hair;
+	static boolean[][] visited;
+	static char[] color = {'W', 'B', 'O'};
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+		for(int tc=1; tc<=t; tc++) {
+			
+			
+			
+		}
+		
+		
+	}
+
+}
